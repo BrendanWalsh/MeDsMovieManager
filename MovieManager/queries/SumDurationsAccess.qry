@@ -1,0 +1,7 @@
+Sum Durations
+SELECT CSTR(CSTR(FIX([Time]/86400))+' days, '+
+            CSTR(FIX(([Time]-FIX([Time]/86400)*86400)/3600))+' hours, '+
+            CSTR(FIX(([Time]-FIX([Time]/86400)*86400-FIX(([Time]-FIX([Time]/86400)*86400)/3600)*3600)/60))+' minutes and '+
+            CSTR(FIX([Time]-FIX([Time]/86400)*86400-FIX(([Time]-FIX([Time]/86400)*86400)/3600)*3600-FIX(([Time]-FIX([Time]/86400)*86400-FIX(([Time]-FIX([Time]/86400)*86400)/3600)*3600)/60)*60))+' seconds') AS [Total Duration]
+FROM (SELECT SUM([Additional Info].[Duration]) AS [Time]
+      FROM [Additional Info]);

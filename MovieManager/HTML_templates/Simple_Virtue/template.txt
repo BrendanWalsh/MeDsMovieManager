@@ -1,0 +1,10 @@
+Template Name=Simple Virtue
+Template Version=1.1
+Template HTML=Simple_Virtue.html
+Template CSS=Simple_Virtue.css
+Author Name=Bro
+Author email=bro3@users.sourceforge.net
+Export compatible=Yes
+Compatible browsers= IE6, IE7, Opera 9, Firefox 2, Firefox 3
+Known bugs=Vertical scrollbar in IE
+Comments=None

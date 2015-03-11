@@ -1,0 +1,6 @@
+Unseen Movies With SubTitles
+SELECT "General Info"."Title", "Additional Info"."Subtitles"
+FROM "General Info" INNER JOIN "Additional Info" ON "General Info".id="Additional Info".id
+WHERE (("Additional Info"."Subtitles" IS NOT NULL) AND ("Additional Info"."Subtitles"<>'') AND 
+      (("General Info"."Seen" = 0)))
+ORDER BY "General Info"."Title";

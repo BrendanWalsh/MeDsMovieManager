@@ -1,0 +1,26 @@
+
+body {
+    background-color: #3F3F3F;
+    background-image: url(Dark_Inferno.png);
+}
+
+.main { 
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.movieinfo { 
+    color: white;
+}
+
+.plot-cast { 
+    border: 2px solid black;
+    color: white;
+    background-color: #383838;
+    font-weight: normal;
+    
+}
+
+.movieinfotable { 
+    color: white;
+}

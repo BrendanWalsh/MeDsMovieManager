@@ -1,0 +1,3 @@
+Sum GB
+SELECT ROUND(SUM("Additional Info"."File Size")/1024,3) AS "Total of GB"
+FROM "Additional Info";

@@ -1,0 +1,3 @@
+Count CDs
+SELECT SUM(Additional_Info.CDs) AS "Number of CDs"
+FROM Additional_Info;

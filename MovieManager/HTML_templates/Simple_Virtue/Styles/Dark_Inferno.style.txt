@@ -1,0 +1,6 @@
+Style Name=Dark Inferno
+Author Name=Bro
+Author email=bro3@users.sourceforge.net
+Style CSS=Dark_Inferno.css
+Other files=Dark_Inferno.png
+Comments=None

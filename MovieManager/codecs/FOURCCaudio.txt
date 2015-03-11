@@ -1,0 +1,153 @@
+0x0000	unknown
+0x0001	PCM	Microsoft Corporation
+0x0002	ADPCM	Microsoft Corporation
+0x0003	IEEE FLOAT	Microsoft Corporation IEEE754
+0x0004	VSELP	Compaq Computer Corp.
+0x0005	IBM CVSD	IBM Corporation
+0x0006	ALAW	Microsoft Corporation
+0x0007	MULAW	Microsoft Corporation
+0x0008	DTS	Microsoft Corporation
+0x0010	OKI ADPCM	OKI
+0x0011	DVI ADPCM	Intel Corporation
+0x0012	Mediaspace ADPCM	Videologic
+0x0013	Sierra ADPCM	Sierra Semiconductor Corp
+0x0014	G723 ADPCM	Antex Electronics Corporation
+0x0015	DIGISTD	DSP Solutions, Inc.
+0x0016	DIGIFIX	DSP Solutions, Inc.
+0x0017	Dialogic OKI ADPCM	Dialogic Corporation
+0x0018	Mediavision ADPCM	Media Vision, Inc. 
+0x0019	CU CODEC	Hewlett-Packard Company
+0x0020	Yamaha ADPCM	Yamaha Corporation of America
+0x0021	Sonarc	Speech Compression
+0x0022	DSP Group TrueSpeech	DSP Group, Inc
+0x0023	ECHOSC1	Echo Speech Corporation
+0x0024	Audiofile AF36	Virtual Music, Inc.
+0x0025	APTX	Audio Processing Technology
+0x0026	Audiofile AF10	Virtual Music, Inc.
+0x0027	Prosody 1612	Aculab plc
+0x0028	LRC	Merging Technologies S.A.
+0x0030	Dolby AC2	Dolby Laboratories
+0x0031	GSM610	Microsoft Corporation
+0x0032	MSN Audio	Microsoft Corporation
+0x0033	Antex ADPCME	Antex Electronics Corporation
+0x0034	Control Res. VQLPC	Control Resources Limited
+0x0035	DigiReal	DSP Solutions, Inc.
+0x0036	DigiADPCM	DSP Solutions, Inc.
+0x0037	Control Res. CR10	Control Resources Limited
+0x0038	NMS VBXADPCM	Natural MicroSystems
+0x0039	CS IMAADPCM	Crystal Semiconductor IMA ADPCM 
+0x003A	ECHOSC3	Echo Speech Corporation 
+0x003B	Rockwell ADPCM	Rockwell International 
+0x003C	Rockwell DIGITALK	Rockwell International 
+0x003D	XEBEC	Xebec Multimedia Solutions Limited 
+0x0040	G721 ADPCM	Antex Electronics Corporation
+0x0041	G728 CELP	Antex Electronics Corporation
+0x0042	MSG723	Microsoft Corporation
+0x0050	MPEG (MP1/MP2)	ISO/IEC
+0x0052	RT24	InSoft, Inc.
+0x0053	PAC	InSoft, Inc.
+0x0055	MP3	ISO
+0x0059	Lucent G723	Lucent Technologies
+0x0060	Cirrus	Cirrus Logic
+0x0061	ESPCM	ESS Technology
+0x0062	Voxware	Voxware Inc
+0x0063	Canopus ATRAC	Canopus, co., Ltd.
+0x0064	G726 ADPCM	APICOM
+0x0065	G722 ADPCM	APICOM
+0x0066	DSAT	Microsoft Corporation
+0x0067	DSAT DISPLAY	Microsoft Corporation
+0x0069	Voxware BYTE ALIGNED	Voxware Inc.
+0x0070	Voxware AC8	Voxware Inc.
+0x0071	Voxware AC10	Voxware Inc.
+0x0072	Voxware AC16	Voxware Inc.
+0x0073	Voxware AC20	Voxware Inc.
+0x0074	Voxware RT24	Voxware Inc.
+0x0075	Voxware RT29	Voxware Inc.
+0x0076	Voxware RT29HW	Voxware Inc.
+0x0077	Voxware VR12	Voxware Inc.
+0x0078	Voxware VR18	Voxware Inc.
+0x0079	Voxware TQ40	Voxware Inc.
+0x0080	Softsound	Softsound, Ltd.
+0x0081	Voxware TQ60	Voxware Inc
+0x0082	MSRT24	Microsoft Corporation
+0x0083	G729A	AT&T Labs, Inc.
+0x0084	MVI MVI2	Motion Pixels
+0x0085	DF G726	DataFusion Systems (Pty) (Ltd)
+0x0086	DF GSM610	DataFusion Systems (Pty) (Ltd)
+0x0088	ISIAUDIO	Iterated Systems, Inc.
+0x0089	ONLIVE	OnLive! Technologies, Inc.
+0x0091	SBC24	Siemens Business Communications Sys
+0x0092	Dolby AC3 SPDIF	Sonic Foundry
+0x0093	MediaSonic G723	MediaSonic
+0x0094	Prosody 8KBPS	Aculab plc
+0x0097	Zyxel ADPCM	ZyXEL Communications, Inc.
+0x0098	Philips LPCBB	Philips Speech Processing
+0x0099	PACKED	Studer Professional Audio AG
+0x00A0	Malden PhonyTalk	Malden Electronics Ltd.
+0x0100	Rhetorax ADPCM	Rhetorex Inc
+0x0101	IRAT	BeCubed Software Inc.
+0x0101	MULAW	IBM mu-law format
+0x0102	ALAW	IBM a-law format
+0x0103	ADPCM	IBM AVC Adaptive Differential Pulse Code Modulation
+0x0111	Vivo G723	Vivo Software
+0x0112	Vivo SIREN	Vivo Software
+0x0123	DEC G723	Digital Equipment Corporation
+0x0125	Sanyo LD ADPCM	Sanyo Electric Co., Ltd.
+0x0130	Sipro Lab ACEPLNET	Sipro Lab Telecom Inc.
+0x0131	Sipro Lab ACELP4800	Sipro Lab Telecom Inc.
+0x0132	Sipro Lab ACELP8V3	Sipro Lab Telecom Inc.
+0x0133	Sipro Lab G729	Sipro Lab Telecom Inc.
+0x0134	Sipro Lab G729A	Sipro Lab Telecom Inc.
+0x0135	Sipro Lab KELVIN	Sipro Lab Telecom Inc.
+0x0140	G726ADPCM	Dictaphone Corporation
+0x0150	Qualcomm Purevoice	Qualcomm, Inc.
+0x0151	Qualcomm Halfrate	Qualcomm, Inc.
+0x0155	TUBGSM	Ring Zero Systems, Inc.
+0x0160	MSAUDIO1/DIVX	Microsoft Corporation
+0x0161	MSAUDIO2/DIVX	Microsoft Corporation
+0x0162	Windows Media Audio 9 Professional	Microsoft, Inc.
+0x0163	Windows Media Audio 9 Lossless	Microsoft, Inc.
+0x0200	Creative ADPCM	Creative Labs, Inc
+0x0202	Creative FASTSPEECH8	Creative Labs, Inc
+0x0203	Creative FASTSPEECH10	Creative Labs, Inc
+0x0210	UHER ADPCM	UHER informatic GmbH
+0x0220	Quarterdeck	Quarterdeck Corporation
+0x0230	I-Link VC	I-link Worldwide
+0x0240	RAW SPORT	Aureal Semiconductor
+0x0250	IPI HSX	Interactive Products, Inc.
+0x0251	IPI RPELP	Interactive Products, Inc.
+0x0260	CS2	Consistent Software
+0x0270	Sony SCX	Sony Corp.
+0x0300	FM TOWNS SND	Fujitsu Corp.
+0x0400	BTV DIGITAL	Brooktree Corporation
+0x0401	Intel Music Coder (IMC)	Intel Corporation
+0x0450	QDesign MUSIC	QDesign Corporation
+0x0680	VME VMPCM	AT&T Labs, Inc.
+0x0681	TPC	AT&T Labs, Inc.
+0x08AE	Lightwave Lossless	http://www.clearjump.com
+0x1000	OLIGSM	Ing C. Olivetti & C., S.p.A.
+0x1001	OLIADPCM	Ing C. Olivetti & C., S.p.A.
+0x1002	OLICELP	Ing C. Olivetti & C., S.p.A.
+0x1003	OLISBC	Ing C. Olivetti & C., S.p.A.
+0x1004	OLIOPR	Ing C. Olivetti & C., S.p.A.
+0x1100	LH CODEC	Lernout & Hauspie
+0x1101	L & H CELP codec	Lernout & Hauspie 
+0x1102	L & H SBC codec	Lernout & Hauspie 
+0x1103	L & H SBC codec	Lernout & Hauspie 
+0x1104	L & H SBC codec	Lernout & Hauspie 
+0x1400	NORRIS	Norris Communications, Inc.
+0x1401	ISIAUDIO	ISIAudio
+0x1500	Soundspace Musicompress	Soundspace Music Compression
+0x181C	VoxWare RT24 speech codec	Voxware Inc.
+0x1FC4	NCT ALF2CD codec	http://www.nctsoft.com
+0x2000	AC3	Dolby Laboratories, Inc
+0x2001	DTS	Digital Theater System
+0x674f	Ogg Vorbis 1	Ogg Vorbis
+0x6750	Ogg Vorbis 2	Ogg Vorbis
+0x6751	Ogg Vorbis 3	Ogg Vorbis
+0x676f	Ogg Vorbis 1 PLUS	Ogg Vorbis
+0x6770	Ogg Vorbis 2 PLUS	Ogg Vorbis
+0x6771	Ogg Vorbis 3 PLUS	Ogg Vorbis
+0x7A21	GSM-AMR (CBR, no SID)	3GPP Standard
+0x7A22	GSM-AMR (VBR, including SID)	3GPP Standard
+0xFFFF	development use	N.A.

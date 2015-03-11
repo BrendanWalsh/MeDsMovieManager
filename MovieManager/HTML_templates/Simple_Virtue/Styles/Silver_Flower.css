@@ -1,0 +1,26 @@
+
+body {
+    background-color: #909090;
+    background-image: url(Silver_Flower.png);
+
+}
+
+.main { 
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.movieinfo { 
+    color: black;
+}
+
+.plot-cast { 
+    font-weight: normal;
+    border: 2px solid black;
+    color: white;
+    background-color: #383838;
+}
+
+td.firstcol {
+    width: 110px;
+}

@@ -1,0 +1,19 @@
+So how do you get this thing running...
+
+First of all, you need to have Java Developers Kit (SDK) installed to be able to 
+compile the source.
+
+Fast and simple:
+Simply use the batch/shell scripts to compile and run the app.
+
+Ant:
+You can use ant to build and run the movie manager. The available commands are 
+displayed when running ant with no argument.
+
+Eclipse:
+Start a new project and choose the 'Create project from existing source'.
+Browse your way to the root directory of where you unpacked these files 
+(where the .project and .classpath files are located) and select.
+Apply a name to the project and click next.
+Eclipse should do some searching, and when it's done click finish and you should 
+be good to go.

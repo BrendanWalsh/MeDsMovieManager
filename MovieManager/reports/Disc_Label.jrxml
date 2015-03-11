@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Label" pageWidth="360" pageHeight="842" columnWidth="280" leftMargin="40" rightMargin="40" topMargin="40" bottomMargin="20">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="xmm.description" value="5x5 label suitable for disc sleeve"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="Title" class="java.lang.String">
+		<fieldDescription><![CDATA[@title]]></fieldDescription>
+	</field>
+	<field name="Date" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/date]]></fieldDescription>
+	</field>
+	<field name="DirectedBy" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/directedBy]]></fieldDescription>
+	</field>
+	<field name="WrittenBy" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/writtenBy]]></fieldDescription>
+	</field>
+	<field name="Cast" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/cast]]></fieldDescription>
+	</field>
+	<field name="Country" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/country]]></fieldDescription>
+	</field>
+	<field name="Language" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/language]]></fieldDescription>
+	</field>
+	<field name="Colour" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/colour]]></fieldDescription>
+	</field>
+	<field name="SoundMix" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/webSoundMix]]></fieldDescription>
+	</field>
+	<field name="Genre" class="java.lang.String">
+		<fieldDescription><![CDATA[GeneralInfo/genre]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="230">
+			<textField isStretchWithOverflow="true">
+				<reportElement x="64" y="0" width="152" height="15"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Title}+" ("+$F{Date}+")"]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="16" width="280" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Directed by: "+$F{DirectedBy}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="28" width="280" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Written by: "+$F{WrittenBy}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="30" y="65" width="220" height="118"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Cast}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="198" width="280" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Country}+", "+$F{Language}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="211" width="280" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Colour}+", "+$F{SoundMix}]]></textFieldExpression>
+			</textField>
+			<break>
+				<reportElement x="0" y="227" width="100" height="1"/>
+			</break>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="40" width="280" height="12"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Genre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

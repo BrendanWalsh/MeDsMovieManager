@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<installation version="1.0">
+  
+   <info>
+	  <appname>MeD's Movie Manager</appname>
+	  <appversion>@{version}</appversion>
+	  
+	  <url>http://xmm.sourceforge.net</url>
+	  <javaversion>1.5</javaversion>
+	  	<requiresjdk>no</requiresjdk>
+	  <run-privileged condition="izpack.windowsinstall.vista|izpack.windowsinstall.7"/>
+   </info>
+
+<variables>
+<variable name="DesktopShortcutCheckboxEnabled" value="true"/>
+<!-- <variable name="ApplicationShortcutPath" value="ApplicationShortcuts"/>
+-->
+</variables>
+
+<native type="izpack" name="ShellLink.dll"/>
+<native type="izpack" name="ShellLink_x64.dll"/>
+<native type="3rdparty" name="COIOSHelper.dll" stage="both">
+  <os family="windows"/>
+</native>
+
+	  	<dynamicvariables>
+	  	<variable name="APP_FOLDER_NAME" value="MeDs-Movie-Manager" />
+	  	</dynamicvariables>
+	  	
+<resources>
+    <res src="packaging/izpack/shortcutspec/shortcutSpec.xml" id="shortcutSpec.xml"/>
+    <res src="packaging/izpack/shortcutspec/Unix_shortcutSpec.xml" id="Unix_shortcutSpec.xml"/>
+
+  <res id="CustomLangpack.xml_eng" src="packaging/izpack/CustomLangpack.xml"/>
+  <res id="TargetPanel.dir" src="packaging/izpack/TargetDir.txt"/>
+	  	
+</resources>
+	  	
+  <guiprefs height="360" resizable="yes" width="450"/>
+  
+  <locale> 
+	<langpack iso3="eng"/>
+  </locale>
+  
+  
+  <panels>
+	<panel classname="HelloPanel"/>
+	<panel classname="TargetPanel"/>
+	<panel classname="InstallPanel"/>
+	<panel classname="ShortcutPanel"/>
+	<panel classname="SimpleFinishPanel"/>
+  </panels>
+  
+  <listeners>
+	<listener installer="RegistryInstallerListener"
+	  uninstaller="RegistryUninstallerListener" >
+	  <os family="windows"/>
+	</listener>
+  </listeners>
+
+	  	
+  <packs>
+	<pack name="MeD's Movie Manager files" required="yes">
+	  <description>MeD's Movie Manager files</description>
+	  
+	  <!-- Files in root dir (install dir)  -->
+	  <fileset targetdir="$INSTALL_PATH/" dir="MovieManager/" 
+			   includes="@{mainFiles}">
+	  </fileset>
+	  
+	  <!-- config files -->
+	  <fileset targetdir="$INSTALL_PATH/config/" 
+			   dir="MovieManager/config/" 
+			   includes="@{config_file_list}"
+			   exclude="MovieManager.tmx"
+			   />
+	  
+	   <!-- Config file for log4j  -->
+	  <fileset dir="@{dist-tmp}" targetdir="$INSTALL_PATH/config">
+	      <include name="log4j.properties" />
+	  </fileset>
+
+	  <fileset targetdir="$INSTALL_PATH/" 
+			   dir="" 
+			   includes="@{infoFiles}"
+			   />
+	  
+	  <!-- Files in root dir (install dir)  -->
+	  <fileset targetdir="$INSTALL_PATH/reports/" 
+			   dir="MovieManager/reports/" 
+			   includes="@{jasperFiles}"
+			   />
+	  
+	  <!-- libraries -->
+	  <fileset targetdir="$INSTALL_PATH/" 
+			   dir="MovieManager/" 
+			   includes="@{library_file_list_all}"
+			   />
+		  
+	  <!--html template files-->
+	  <fileset targetdir="$INSTALL_PATH/HTML_templates/" 
+			   dir="MovieManager/HTML_templates/" 
+			   includes="@{html_template_files}"
+			   />
+		  
+	  <!-- Adding the lookAndFeels.ini file -->
+	  <fileset dir="@{dist-tmp}" targetdir="$INSTALL_PATH/lib/LookAndFeels">
+	      <include name="lookAndFeels.ini" />
+	  </fileset>
+				  	  
+	</pack>
+  </packs>
+
+</installation>

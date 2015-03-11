@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<!-- The English langpack -->
+
+<langpack>
+    <!-- <str id="TargetPanel.warn" txt="<html>The directory already exists! Please uninstall any previous installations to this directory!<br><center>Are you sure you want to continue?</center></html>"/> -->
+    <str id="TargetPanel.warn" txt="&lt;html&gt;The directory already exists! Please uninstall any previous installations to this directory!&lt;br&gt;&lt;center&gt;Are you sure you want to continue?&lt;/center&gt;&lt;/html&gt;"/>
+   <!-- <str id="TargetPanel.warn" txt="The directory already exists! Please uninstall any previous installations to this directory!Are you sure you want to continue?"/> -->
+</langpack>

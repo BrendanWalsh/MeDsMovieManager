@@ -1,0 +1,5 @@
+Unseen Movies
+SELECT "General Info"."Title", "Additional Info"."Subtitles"
+FROM "General Info" INNER JOIN "Additional Info" ON "General Info".id="Additional Info".id
+WHERE ("General Info"."Seen" = 0)
+ORDER BY "General Info"."Title";

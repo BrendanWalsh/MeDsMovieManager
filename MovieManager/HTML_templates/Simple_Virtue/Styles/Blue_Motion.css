@@ -1,0 +1,20 @@
+
+body {
+    background-color: #59C1D7;
+    background-image: url(Blue_Motion.png);
+}
+
+.main { 
+    font-size: 17px;
+}
+
+.movieinfo { 
+    color: black;
+}
+
+.plot-cast { 
+    border: 2px solid black;
+    color: black;
+    background-color: #A5DFEC;
+}
+

@@ -1,0 +1,3 @@
+Count Movies
+SELECT COUNT("General Info".ID) AS "Number of Movies"
+FROM "General Info";

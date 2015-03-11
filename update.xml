@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<updatelist application="MeD's Movie Manager"
+			baseurl="http://downloads.sourceforge.net/project/xmm/Updates/" 
+			icon="icon.png">
+
+    <architect tag="any" os="" arch="">
+        <launcher exec="${JAVABIN}">
+            <argument value="-jar"/>
+            <argument value="${APPHOME}/MovieManager.jar"/>
+        </launcher>
+    </architect>
+    
+    <architect tag="win32" os="Windows" arch="x86">
+        <launcher exec="${APPHOME}\MovieManager.exe"/>
+    </architect>
+
+    <architect tag="linux" os="Linux" arch="x86">
+        <launcher exec="${JAVABIN}">
+            <argument value="-jar"/>
+            <argument value="${APPHOME}/MovieManager.jar"/>
+        </launcher>
+    </architect>
+	
+	
+	<version release="5" minrelease="5" version="2.9.1.2" name="MovieManager">
+      <description>
+		&lt;ul&gt;
+		&lt;li&gt;Reports for the report generator have been improved and a couple of extra reports were added.&lt;/li&gt;
+		&lt;li&gt;Personal rating was sometimes shown as -1.0 if it hadn't been set.&lt;/li&gt;
+		&lt;li&gt;Some strange behaviour with the lists on startup was fixed.&lt;/li&gt;
+		&lt;li&gt;Export and Import would fail when using Substance Look and Feel.&lt;/li&gt;
+		&lt;li&gt;Report Generator did not function properly.&lt;/li&gt;
+		&lt;/ul&gt;
+	  </description>
+	 </version>
+    
+	
+	<version release="4" minrelease="3" version="2.9.1.1" name="MovieManager">
+      <description>
+		&lt;ul&gt;
+		&lt;li&gt;Export to CSV and Excel was broken.&lt;/li&gt;
+		&lt;/ul&gt;
+	  </description>
+	  
+	  <arch name="all" gui="true">
+        <file name="MovieManager.jar" sourcedir="MovieManager/2.9.1.1/" destdir="${APPHOME}" size="1535580" compress="none" />
+      </arch>
+	  
+    </version>
+
+	<version release="3" minrelease="3" version="2.9.1" name="MovieManager">
+        <description>
+		  	&lt;ul&gt;
+			&lt;li&gt;Added personal rating field.&lt;/li&gt;
+			&lt;li&gt;Added new Look &amp; Feel (NimROD).&lt;/li&gt;
+			&lt;li&gt;Fixed bug in additional info fields.&lt;/li&gt;
+			&lt;/ul&gt;
+		</description>
+    </version>
+
+    <version release="1" version="2.9.0" name="MovieManager">
+        <description>Initial release using jupidator update library</description>
+    </version>
+    
+</updatelist>

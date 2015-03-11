@@ -1,0 +1,97 @@
+
+.main { 
+    margin: 10px;
+    font-size: 16px;
+}
+
+.cover { 
+    float: right;
+    position: absolute;
+    margin-top: 22px;
+    margin-right: 15px;
+    right: 12px; /* Must be at least 12 to avoid horizontal scrolling in the html panel */
+    
+    border: 0px;
+}
+
+
+.cover img {
+    border: none;
+}
+
+.movieinfo { 
+    float:left;
+    margin-left: 10px;
+    margin-bottom: 5px;
+	font-size: 20px;
+}
+
+.top { 
+    position: relative;
+    padding: 12px;
+}
+
+.plot-cast { 
+    padding: 17px;
+    padding-top: 12px;
+    
+    clear: both;
+    font-size: 16px;
+
+    margin: 15px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+.plot { 
+    left: 20px;
+    margin: 1px;
+}
+
+.cast { 
+    left: 20px;
+    margin: 1px;
+}
+
+.movietitle { 
+    font-size: 25px;
+    margin-bottom: 6px;
+}
+
+    
+
+
+big.smallheader {   
+    font-size: 21px;
+}
+
+td.firstcol {
+    text-align: left;
+	margin-right:4px;
+}
+
+td.secondcol {
+    text-align: left;
+    white-space: nowrap;
+}
+
+td.thirdcol {
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+	margin-right:4px;
+}
+
+td.fourthcol {
+    text-align: left;
+}
+
+
+
+tr.thirdrow {
+    margin-top: 20px;
+}
+
+span.name {
+   font-weight: bold;
+}

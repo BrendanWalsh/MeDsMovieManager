@@ -1,0 +1,5 @@
+Movies With SubTitles
+SELECT General_Info.Title, General_Info.Seen, Additional_Info.Subtitles
+FROM General_Info INNER JOIN Additional_Info ON General_Info.id=Additional_Info.id
+WHERE ((Additional_Info.Subtitles IS NOT NULL) AND (Additional_Info.Subtitles<>''))
+ORDER BY General_Info.Title;

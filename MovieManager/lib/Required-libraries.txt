@@ -1,0 +1,58 @@
+Required libraries for MeD's Movie Manager v2.8
+
+These libraries can be found in the MovieManager binary or source release.
+
+BrowserLauncher2-1_3.jar		- Browser launcher java library
+
+castor-1.3.1-core.jar			- Object-XML binding utility.
+castor-1.3.1.jar
+
+commons-httpclient-3.1.jar   	- HTTP java library
+commons-logging-1.1.1.jar		- Logging library required by other libraries (castor, httpclient).
+
+
+log4j-1.2.15.jar				- Java logging library
+
+skinlf.jar						- Skin L&F
+nimrodlf-1.1a.jar				- NimROD L&F.
+
+TableLayout.jar					- Free layout manager
+useful.jar						- Java library with Swing Tree classes extension
+
+jna-3.2.4.jar					- Simple JNI library for loading MediaInfoDLL
+MediaInfo.dll					- Windows library for reading technical info from media files.
+
+
+ostermillerutils_1_05_00_for_java_1_4.jar - CSV library
+
+AppleJavaExtensions.jar			- Needed for Mac OS X adaption.
+libquaqua.jnilib				- Needed for Quaqua L&F
+quaqua.jar		                - Needed for Quaqua L&F
+
+
+Jasper Reports:
+jasperreports-3.7.1.jar			- Report creation utility
+iText-2.1.7.jar					- Needed for jasperreports
+poi-3.6-20091214.jar			- Needed for jasperreports
+commons-beanutils-1.8.2.jar		- Needed for jasperreports
+commons-collections-3.2.1.jar	- Needed for jasperreports
+commons-digester-2.0.jar		- Needed for jasperreports
+commons-javaflow-20060411.jar	- Needed for jasperreports
+
+jfreechart-1.0.13.jar			- Needed for jasperreports
+jcommon-1.0.16.jar				- Required by JFreeChart
+
+commons-codec-1.3.jar			- Needed for jasperreports...maybe..
+
+jexcelapi_2_6_12.jar			- Required by jasperreports and the excel export function.
+
+jupidator-3.0.1.jar				- Library for updating application.
+ant-contrib-0.6.jar				- Easier ant build script.
+
+In applet mode, these are the only required libraries:
+
+TableLayout.jar						  	   Layout of the main window
+useful.jar								   JTree extension
+BrowserLauncher2-1_3.jar				   Launching web browser when clicking cover 
+log4j-1.2.15.jar						   Logging library
+mysql-connector-java-5.1.7-bin.jar		   MySQL driver

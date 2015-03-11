@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<project name="MeDs Movie Manager IzPack installer" default="makeIzpackInstaller" basedir="">
+  <description>
+	MeDs Movie Manager IzPack install creator
+  </description>
+
+  <target name="makeIzpackInstaller" 
+		  description="Creates the izPack installer.">
+	
+	<taskdef name="izpack" classname="com.izforge.izpack.ant.IzPackTask">
+		<classpath refid="izpack.claspath"/>
+    </taskdef>
+
+	<izpack input="${izpack.dir}/izpack-installer-config.xml"
+			output="${dist}/MovieManager.v.${versionName}.installer.jar"
+			installerType="standard" basedir="."
+			izpackdir="${izpack.dir}"  
+			inheritAll="true"
+			>
+		
+	</izpack>
+  </target>
+
+</project>
+
+

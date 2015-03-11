@@ -1,0 +1,3 @@
+Count CD Cases
+SELECT SUM("Additional Info"."CD Cases") AS "Number of CD Cases"
+FROM "Additional Info";

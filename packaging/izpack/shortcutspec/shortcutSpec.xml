@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<shortcuts>
+
+    <skipIfNotSupported/>
+
+    <programGroup defaultName="MeD-s-Movie-Manager" location="applications"/>
+
+    <!--
+      <shortcut
+         name="IzPack"
+         programGroup="yes"
+         desktop="yes"
+         applications="no"
+         startMenu="no"
+         startup="no"
+         target="$INSTALL_PATH\bin\izpack-fe.bat"
+         commandLine=""
+         description="Front-End for IzPack installation tool"
+         iconFile="$INSTALL_PATH\bin\icons\izpack.ico"
+         iconIndex="0"
+         initialState="noShow">
+
+         <createForPack name="Core"/>
+
+       </shortcut>
+    -->
+
+    <shortcut
+            name="MeD's Movie Manager"
+            programGroup="yes"
+            desktop="yes"
+            applications="no"
+            startMenu="no"
+            startup="no"
+            target="$INSTALL_PATH\MovieManager.exe"
+            description="Run MeD's Movie Manager"
+			iconFile="$INSTALL_PATH\Icon.ico"
+			
+			>      
+    </shortcut>
+	
+    <shortcut
+            name="Uninstall-MeD-s-Movie-Manager"
+            programGroup="yes"
+            desktop="no"
+            applications="no"
+            startMenu="no"
+            startup="no"
+            target="$INSTALL_PATH\Uninstaller\uninstaller.jar"
+            commandLine=""
+            iconFile="%SystemRoot%\system32\SHELL32.dll"
+            iconIndex="31"
+            description="Run uninstaller for MeD's Movie Manager">
+
+	</shortcut>
+
+<!--
+    <shortcut
+            name="NanoXML Documentation"
+            programGroup="yes"
+            desktop="no"
+            applications="no"
+            startMenu="no"
+            startup="no"
+            target="$INSTALL_PATH\doc\nanoxml\NanoXML-Java.pdf"
+            commandLine=""
+            iconFile="%SystemRoot%\system32\SHELL32.dll"
+            iconIndex="23"
+            description="This opens Adobe (Acrobat) Reader (if available) to look into or print the NanoXML (PDF) developer documentation">
+
+        <createForPack name="NanoXML Documentation"/>
+    </shortcut>
+
+    <shortcut
+            name="IzPack@ver@ PDF Documentation"
+            programGroup="yes"
+            desktop="no"
+            applications="no"
+            startMenu="no"
+            startup="no"
+            target="$INSTALL_PATH\doc\izpack\pdf\manual.pdf"
+            commandLine=""
+            iconFile="%SystemRoot%\system32\SHELL32.dll"
+            iconIndex="23"
+            description="This opens Adobe (Acrobat) Reader (if available) to look into or print the IzPack @build.number@ (PDF) user documentation">
+
+        <createForPack name="PDF Documentation"/>
+    </shortcut>
+    <shortcut
+            name="Izpack@ver@ Uninstaller"
+            programGroup="yes"
+            desktop="no"
+            applications="no"
+            startMenu="no"
+            startup="no"
+            target="$INSTALL_PATH\Uninstaller\uninstaller.jar"
+            commandLine=""
+            iconFile="%SystemRoot%\system32\SHELL32.dll"
+            iconIndex="31"
+            description="This uninstalls IzPack @build.number@">
+
+        <createForPack name="Core"/>
+    </shortcut>
+-->
+
+</shortcuts>

@@ -1,0 +1,970 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<project name="MeDs Movie Manager Project" default="Welcome"
+	basedir="">
+	<description>
+		MeDs Movie Manager build file
+  </description>
+
+	<target name="Welcome">
+<echo>
+	============================================
+	====   MeD's Movie Manager build file   ====
+	============================================
+	 Targets:
+	============================================
+	 clean     - clears all generated files
+	 compile   - compiles all java files
+	 run       - runs the moviemanager
+	
+	 jar       - creates the MovieManager.jar
+	 IMDbLib   - creates the IMDb.jar
+     jars      - calls targets jar and IMDb-lib  
+	 build     - calls targets compile and jars
+	 all       - calls targets clean, build, archives, izpack
+	 archives  - creates the zip distribution files
+	 izpack    - creates the IzPack java installer
+	 build-mac - create Mac Application Bundle
+	 dist-mac  - create Mac DMG file
+	 javadoc   - compiles the Javadoc
+	 changelog - compiles the changelog to HTML
+	 readme    - compiles the readme to HTML
+	</echo>
+	</target>
+
+	<!-- set global properties for this build -->
+
+	<property name="version" value="2.9.1.3" />
+	
+	<property name="versionName" value="${version}" />
+	
+	<property name="build" location="MovieManager" />
+	<property name="dist" location="dist" />
+	<property name="izpack.dir" location="packaging/izpack" />
+
+	<property name="base" value="MovieManager/" />
+
+	<property name="ant-contrib-path" value="MovieManager/lib/ant-contrib-0.6.jar" />
+	
+	<!-- Import the ant contrib library -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath><pathelement location="${ant-contrib-path}"/></classpath>
+	</taskdef>
+	
+	<property name="jasperFiles" value="*.jasper, *.png, *.jrxml" />
+
+	<property name="mainFiles"
+		value="MovieManager.exe, MovieManager.jar, Applet.html, Icon.ico" />
+
+	<property name="infoFiles"
+		value="License/, Readme.html, Changelog.html" />
+
+	<!-- For printing path the property 
+	
+	<echo message="${jar.classpath}"/>
+
+	<property name="cp" refid="libraries.path"/>
+	<echo message="Classpath is ${cp}"/>
+	-->
+		
+	<!-- Define all the HTML template files  -->
+	<property name="html_template_files"
+		value="Simple_Virtue/Simple_Virtue.css,
+		   Simple_Virtue/Simple_Virtue.html,
+		   Simple_Virtue/template.txt,
+		   Simple_Virtue/Styles/A_Touch_of_Blue.css,
+		   Simple_Virtue/Styles/A_Touch_of_Blue.style.txt,
+		   Simple_Virtue/Styles/A_Touch_of_Green.css,
+		   Simple_Virtue/Styles/A_Touch_of_Green.style.txt,
+		   Simple_Virtue/Styles/Blue_Motion.css,
+		   Simple_Virtue/Styles/Blue_Motion.png,
+		   Simple_Virtue/Styles/Blue_Motion.style.txt,
+		   Simple_Virtue/Styles/Dark_Inferno.css,
+		   Simple_Virtue/Styles/Dark_Inferno.png,
+		   Simple_Virtue/Styles/Dark_Inferno.style.txt,
+		   Simple_Virtue/Styles/Silver_Flower.css,
+		   Simple_Virtue/Styles/Silver_Flower.png,
+		   Simple_Virtue/Styles/Silver_Flower.style.txt
+		   "/>
+	
+	<property name="config_file_list"
+		value="castor.properties,
+		Castor-mapping.xml,
+		MovieManager.tmx,
+		Temp.mdb
+		"/>
+	
+
+	<!-- lib/mac/libquaqua.jnilib,  -->
+	
+	<!-- All the libraries in the lib that are included in classpath  -->
+	<property name="libraries"
+		value="
+		lib/cobra/cobra-0.98.2.jar,
+		lib/cobra/js.jar,
+		lib/drivers/hsqldb_1.8.1.1.jar,
+		lib/drivers/mysql-connector-java-5.1.11-bin.jar,
+		lib/mac/AppleJavaExtensions.jar,
+		lib/mac/quaqua.jar,
+		lib/BrowserLauncher2-1_3.jar,
+		lib/castor-1.3.1.jar,
+		lib/castor-1.3.1-core.jar,
+		lib/commons-digester-2.0.jar,
+		lib/commons-collections-3.2.1.jar,
+		lib/commons-beanutils-1.8.2.jar,
+		lib/commons-httpclient-3.1.jar,
+		lib/commons-logging-1.1.1.jar,
+		lib/commons-codec-1.3.jar,
+		lib/gettext-commons-0.9.jar,
+		lib/iText-2.1.7.jar,
+		lib/jasperreports-3.7.1.jar,
+		lib/jna-3.2.4.jar,
+		lib/jexcelapi_2_6_12.jar,
+		lib/log4j-1.2.15.jar,
+		lib/ostermillerutils_1_05_00_for_java_1_4.jar,
+		lib/poi-3.6-20091214.jar,
+		lib/ProportionLayout.jar,
+		lib/skinlf.jar,
+		lib/nimrodlf-1.1a.jar,
+		lib/TableLayout.jar,
+		lib/useful.jar,
+		lib/balloontip-1.0.jar,
+		lib/jupidator-3.0.1.jar,
+		lib/xml-apis.jar,
+		lib/xerces.jar
+		" />
+	
+	<!-- All libraries including IMDb.jar -->
+	<property name="libraries_bin_dist"
+			value="${libraries},
+			lib/IMDb.jar"
+	/>
+	
+	<property name="libraries_look_and_feel"
+		value="
+		lib/LookAndFeels/CLooks_13.jar,
+		lib/LookAndFeels/InfoNode-1.6.1.jar,
+		lib/LookAndFeels/JGoodies-2.3.1.jar,
+		lib/LookAndFeels/JTattoo-1.4.0.jar,
+		lib/LookAndFeels/kunststoff.jar,
+		lib/LookAndFeels/lipstikLF-1.1.jar,
+		lib/LookAndFeels/liquidlnf-2.9.1.jar,
+		lib/LookAndFeels/OfficeLnFs_2.7.jar,
+		lib/LookAndFeels/PgsLookAndFeel-1.1.jar,
+		lib/LookAndFeels/synthetica.jar,
+		lib/LookAndFeels/syntheticaBlackMoon.jar,
+		lib/LookAndFeels/syntheticaBlackStar.jar,
+		lib/LookAndFeels/syntheticaBlueIce.jar,
+		lib/LookAndFeels/syntheticaBlueMoon.jar,
+		lib/LookAndFeels/syntheticaBlueSteel.jar,
+		lib/LookAndFeels/syntheticaGreenDream.jar,
+		lib/LookAndFeels/syntheticaSilverMoon.jar,
+		lib/LookAndFeels/1.6/substance-6.0.jar,
+		lib/LookAndFeels/1.6/trident.jar,
+		lib/LookAndFeels/Skinlf_Theme_Packs/,
+		lib/LookAndFeels/NimROD_Themes/
+		  "/>
+	
+  	<property name="libraries_windows"
+	      value="
+	        lib/MediaInfo/x86/MediaInfo.dll,
+	        lib/MediaInfo/amd64/MediaInfo.dll
+		"/>
+    	
+	<property name="libraries_mac"
+		value="lib/mac/libquaqua.jnilib
+	"/>
+	
+	<property name="library_file_list_all"
+		value="
+		${libraries_look_and_feel}, 
+		${libraries_bin_dist}, 
+		${libraries_windows},
+		${libraries_mac}
+	"/>
+	
+	<property name="library_file_list_mac"
+	    value="
+		${libraries_look_and_feel}, 
+		${libraries_bin_dist},
+		${libraries_mac}
+	"/>
+	       
+	
+	<target name="path-test">
+			
+		<propertyregex property="new_lib"
+		              input="${libraries1}"
+		              regexp=","
+		              replace=" "
+		              casesensitive="false" />
+
+		
+		<!--
+		<manifestclasspath property="jar.classpath"
+			jarfile="${build}/MovieManager.jar">
+			<classpath refid="libraries.path.all" />
+		</manifestclasspath>
+		-->
+		<echo message="${new_lib}"/>
+
+		<property name="cp" refid="libraries.path"/>
+		<echo message="Classpath is ${cp}"/>
+		
+	</target>
+	
+
+	<property name="source" value="${base}/source/" />
+
+	<path id="izpack.claspath">
+		<fileset dir="${izpack.dir}/lib/">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	
+	<path id="project.lib.path">
+		<fileset dir="${base}/lib/">
+			<include name="**/*.jar" />
+			<include name="**/**/*.jar" />
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<path id="project.classpath">
+		<pathelement path="${classes}" />
+		<path refid="project.lib.path" />
+	</path>
+
+	<target name="run" depends="compile" description="Runs the compiled moviemanager">
+		<java classname="net.sf.xmm.moviemanager.MovieManager"
+			classpathref="project.lib.path" classpath="MovieManager/" fork="true"
+			spawn="false" />
+	</target>
+
+
+	<target name="compile" description="Compiles code, output goes to the build dir.">
+		<javac srcdir="MovieManager/source" classpathref="project.classpath"
+			destdir="${build}" source="1.5" target="1.5">
+		</javac>
+	</target>
+
+
+
+
+	<target name="all" description="generate the distribution">
+
+		<!-- Cleans up  first -->
+		<antcall target="clean" />
+
+		<!-- Create the distribution directory -->
+		<echo>Creating directory:${dist}</echo>
+
+		<!-- Builds the thing -->
+		<antcall target="build" />
+
+		<echo>Creating arhcives...</echo>
+		<antcall target="archives" />
+
+		<echo>Creating Izpack Installer...</echo>
+		<antcall target="izpack" />
+
+	</target>
+
+	
+	<target name="build" description="generate the distribution"
+		depends="compile, jars">
+	</target>
+
+
+	<target name="predist" description="Execute before using the dist directory" depends="build">
+	  <mkdir dir="${dist}" />
+	  <mkdir dir="${dist-tmp}" />
+	  <antcall target="makeLookAndFeelIni" />
+	  <antcall target="makeLog4jProperties" />
+	  <antcall target="makeEclipseProjectFiles" />
+	  <antcall target="IMDb-lib" />
+	</target>
+
+	
+	<target name="archives" description="Creates the ZIP archives.">
+	
+		<antcall target="zip-archive" />
+		<antcall target="zip-source" />
+	</target>
+
+	<target name="zip-archive" description="Creates the ZIP archives."
+		depends="predist">
+		
+		<!-- Creating Binary zip MovieManager.v.version.zip  Mirror  -->
+		<zip destfile="${dist}/MovieManager.v.${versionName}.zip"
+			update="false" compress="true">
+
+			<!-- Files in root dir (install dir)  -->
+			<zipfileset prefix="MeDs-Movie-Manager" dir="MovieManager"
+				includes="${mainFiles}">
+			</zipfileset>
+
+			<zipfileset prefix="MeDs-Movie-Manager/config/" dir="MovieManager/config/"
+				includes="${config_file_list}" 
+				excludes="MovieManager.tmx"
+			/>
+
+			<!-- Files for the report generator  -->
+			<zipfileset prefix="MeDs-Movie-Manager/reports/" dir="MovieManager/reports/"
+				includes="*.jasper, *.png, *.jrxml" />
+
+			<!-- libraries -->
+			<zipfileset prefix="MeDs-Movie-Manager/" dir="MovieManager/"
+				includes="${library_file_list_all}" />
+
+			<!-- html template files -->
+			<zipfileset id="template_simple_virtue" prefix="MeDs-Movie-Manager/HTML_templates/"
+				dir="MovieManager/HTML_templates/" includes="${html_template_files}" />
+
+			<zipfileset prefix="MeDs-Movie-Manager" dir="" includes="${infoFiles}" />
+			
+			<!-- Config file for log4j - Created by build script  -->
+			<zipfileset prefix="MeDs-Movie-Manager/config/" 
+				dir="${dist-tmp}"
+				includes="log4j.properties">
+			</zipfileset>
+
+			<!-- lookAndFeels.ini - Created by build script  -->
+			<zipfileset prefix="MeDs-Movie-Manager/lib/LookAndFeels/"
+				dir="${dist-tmp}" includes="lookAndFeels.ini">
+			</zipfileset>
+		</zip>
+
+	</target>
+
+	
+	<target name="zip-source" description="Creates the ZIP archives."
+			depends="predist">
+		  
+			<!-- Creating Source zip MovieManager.v.version.src.zip  Mirror  -->
+			<zip destfile="${dist}/MovieManager.v.${versionName}.src.zip"
+				update="false" compress="true">
+
+				<zipfileset prefix="MeDs-Movie-Manager-Source/MovieManager"
+					dir="MovieManager" includes="MovieManager.exe, Applet.html, Icon.ico">
+
+					<include name="reports/" />
+					<include name="codecs/" />
+					<include name="images/" />
+					<include name="queries/" />
+					<include name="source/" />
+					<include name="test/" />
+
+				</zipfileset>
+
+				<!-- config -->
+				<zipfileset prefix="MeDs-Movie-Manager-Source/MovieManager/config/"
+					dir="MovieManager/config/" includes="${config_file_list}" />
+
+				<!-- Config file for log4j - get directly from config dir  -->
+				<zipfileset prefix="MeDs-Movie-Manager-Source/MovieManager/config/"
+					dir="MovieManager/config/" includes="log4j.properties" />
+
+				<!-- Config file for Eclipse project file  -->
+				<zipfileset prefix="MeDs-Movie-Manager-Source/"
+					dir="${dist-tmp}" includes=".project,.classpath" />
+				
+				<!-- libraries -->
+				<zipfileset prefix="MeDs-Movie-Manager-Source/MovieManager/"
+					dir="MovieManager/" includes="${library_file_list_all}" />
+
+				<!-- ant-contrib and only needed for source distribution -->
+				<zipfileset prefix="MeDs-Movie-Manager-Source/MovieManager/lib/" 
+					dir="MovieManager/lib/"
+					includes="ant-contrib-0.6.jar, Required-libraries.txt" />
+			
+				<zipfileset prefix="MeDs-Movie-Manager-Source/MovieManager/lib/LookAndFeels/"
+					dir="${dist-tmp}" includes="lookAndFeels.ini">
+				</zipfileset>
+
+				<!-- Simple Virtue template -->
+				<zipfileset id="template_simple_virtue"
+					prefix="MeDs-Movie-Manager-Source/MovieManager/HTML_templates/" dir="MovieManager/HTML_templates/"
+					includes="${html_template_files}" />
+
+
+				<zipfileset prefix="MeDs-Movie-Manager-Source" dir=""
+					includes="${infoFiles}">
+					
+				    <include name="Readme.txt"/>
+					<include name="Changelog.txt"/>
+					<include name="xmm.css"/>
+					<include name="SignJar.bat"/>
+					<include name="build.xml"/>
+					<include name="update.xml"/>
+					<include name="localizing/"/>
+					<include name="doc_src/"/>
+					<include name="So how do I get this thing running.txt" />
+				</zipfileset>
+				
+				<zipfileset prefix="MeDs-Movie-Manager-Source/packaging" dir="packaging/">
+					<include name="izpack/" />
+					<include name="mac/" />
+				</zipfileset>
+			</zip>
+		</target>
+
+
+	<target name="jars" description="Creates jar files by depending on targets jar and IMDb-lib"
+			depends="jar, IMDb-lib"/>
+	
+	
+	<target name="jar" description="Creates the MovieManager.jar file"
+		depends="compile">
+
+		<!-- Ensure that the timestamp has been set -->
+		<tstamp />
+				
+		<!-- Replace commas to create a valid manifest classpath -->
+		<propertyregex property="jar.classpath"
+				              input="${libraries_bin_dist}"
+				              regexp=","
+				              replace=" "
+				              casesensitive="false" />
+		
+		<jar destfile="MovieManager/MovieManager.jar">
+
+			<fileset dir="MovieManager/">
+				<include name="net/" />
+				<include name="codecs/" />
+				<include name="images/" />
+				<include name="queries/" />
+				<include name="config/MovieManager.tmx" />
+				<include name="config/internalConfig.ini" />
+				<include name="config/plugins.ini" />
+			
+				<exclude name="net/sf/xmm/moviemanager/http/"/>
+				<exclude name="net/sf/xmm/moviemanager/imdblib/"/>
+				<exclude name="net/sf/xmm/moviemanager/models/imdb/" />
+				<exclude name="net/sf/xmm/moviemanager/gui/imdb/" />
+			</fileset>
+					
+			<manifest>
+				<attribute name="Main-Class" value="net.sf.xmm.moviemanager.MovieManager"/>
+							  	
+				<!--	<section name="MeD's Movie Manager">-->
+			  	<attribute name="Built-By" value="${user.name} on ${TODAY}" />
+			    <attribute name="Implementation-Title" value="MeD's Movie Manager"/>
+			    <attribute name="Implementation-Version" value="${version}"/>
+			  	<attribute name="Class-Path" value="${jar.classpath}" />
+			<!--  </section>-->
+			</manifest>
+		</jar>
+	</target>
+
+
+
+	<target name="IMDb-lib" description="Create the IMDB.jar file." depends="compile">
+	  
+	  <!-- Ensure that the timestamp has been set -->
+	  <tstamp />
+	  
+	  <jar destfile="MovieManager/lib/IMDb.jar" basedir="MovieManager/"
+		   includes="net/sf/xmm/moviemanager/util/StringUtil.class">
+		<fileset dir="MovieManager/">
+		  <include name="net/sf/xmm/moviemanager/http/"/>
+		  <include name="net/sf/xmm/moviemanager/imdblib/"/>
+		  <include name="net/sf/xmm/moviemanager/models/imdb/"/>
+		  <include name="net/sf/xmm/moviemanager/gui/imdb/"/>
+		</fileset>
+	  	
+		<manifest>
+		  <attribute name="Main-Class" value="net.sf.xmm.moviemanager.gui.imdb.DialogAboutIMDbLib" />
+		  <attribute name="Built-By" value="${user.name} on ${TODAY}" />
+		  <attribute name="Implementation-Title" value="IMDb Lib"/>
+		</manifest>
+		
+		</jar>
+	</target>
+
+	
+	
+	<target name="update-path">
+		<echo>
+	   MovieManager/MovieManager.jar bro3,xmm@frs.sourceforge.net:/home/pfs/project/x/xm/xmm/Updates/MovieManager/2.9.0/
+		</echo>	
+   </target>
+	
+	
+	
+	<target name="izpack" depends="predist">
+		<ant antfile="packaging/izpack/build-izpack.xml" target="makeIzpackInstaller"
+			inheritAll="true" inheritrefs="true" />
+	</target>
+
+
+	<!--
+		<target name="dist-mac" > <ant antfile="packaging/mac/build-mac.xml"
+		target="dist-mac" inheritAll="true" inheritrefs="true"/> </target>
+
+		<target name="build-mac" > <ant antfile="packaging/mac/build-mac.xml"
+		target="build-mac" inheritAll="true" inheritrefs="true"/> </target>
+	-->
+
+	
+	<!-- generates the javadoc -->
+	<target name="javadoc" depends="compile">
+
+		<mkdir dir="${dist}/javadoc/" />
+
+		<javadoc destdir="${dist}/javadoc/" author="true" version="true"
+			private="true" use="true" windowtitle="MeD's Movie Manager Javadoc"
+			classpathref="project.classpath" sourcepath="MovieManager/source/"
+			packagenames="net.sf.*">
+			<doctitle>MeD's Movie Manager API Documentation</doctitle>
+		</javadoc>
+	</target>
+
+
+
+	<target name="clean" description="clean up">
+
+		<mkdir dir="${dist}" />
+			
+		<!--
+		Doesn't seem to work too well
+		<symlink action="delete" link="${mac-dist}/Applications/"/>
+		 -->
+		
+		<!--  Deleting the symlink to /Applications. if this is not removed first, the entire /Applications directory will be removed. -->
+		<exec executable="rm">
+			<arg line="-f"/>
+			<arg line="${mac-dist}/Applications"/>
+		</exec>
+		 
+		
+		<!--  Delete files and directories in dist -->
+		<delete includeemptydirs="true">
+			<fileset dir="${dist}" includes="**/*" followsymlinks="false"/>
+		</delete>
+
+		<delete includeemptydirs="true" quiet="true">
+			<fileset dir="${build}/net" />
+		</delete>
+		
+
+		<delete file="${build}/MovieManager.jar" />
+		<delete file="${build}/lib/IMDb.jar" />
+	</target>
+
+
+
+	<!--  For signing java applet  -->
+
+	<target name="sign" depends="jar, generate-keys"
+		description="Signs the generated jar file">
+		<signjar jar="${base}/MovieManager.jar" keystore="keys"
+			storepass="${storepass}" keypass="${keypass}" signedjar="MovieManager.jar"
+			alias="signFiles" />
+		<exec executable="keytool">
+			<arg line="-export" />
+			<arg line="-keystore keys" />
+			<arg line="-storepass ${storepass}" />
+			<arg line="-alias signFiles" />
+			<arg line="-file MovieManager.cer" />
+		</exec>
+		<delete file="${base}/MovieManager.jar" />
+		<delete file="${base}/MovieManager.cer" />
+		<move file="MovieManager.jar" todir="${base}" />
+		<move file="MovieManager.cer" todir="${base}" />
+	</target>
+
+	<target name="generate-keys" description="Generates keys if they don't exist"
+		unless="keys">
+		<genkey alias="signFiles" keystore="keys" keypass="${keypass}"
+			storepass="${storepass}"
+			dname="CN=MeDs Movie Manager, OU=MeD's Movie Manager, O=xmm.sf.net, C=INT" />
+	</target>
+	
+	<!-- Carriage return, hex value 0xD -->
+	<property name="newline" value="&#xD;" />
+
+	<target name="makeLookAndFeelIni"
+		description="Creates a lookAndFeels.ini file used in the distribution packages.">
+
+		<!-- Since new line is added, a carriage return is added before to be windows compatible -->
+		<echo file="${dist-tmp}/lookAndFeels.ini" append="false">${newline}
+Here you can add new Look and Feels's.${line.separator}${newline}
+Make sure the look and Feel jar-file is placed in the 'LookAndFeels' directory${newline}
+and that the correct class is given below.${newline}
+The name and classname must be enclosed in quotes.${newline}
+The names may be set to whatever fit your needs.${newline}
+${newline}
+# Name                                   Class name                                                         Java version   System${newline}
+${newline}
+"Liquid"                       "com.birosoft.liquid.LiquidLookAndFeel"                                "1.5"${newline}
+"JTattoo - Acryl"              "com.jtattoo.plaf.acryl.AcrylLookAndFeel"                              "1.4"${newline}
+"JTattoo - Aero"               "com.jtattoo.plaf.aero.AeroLookAndFeel"                                "1.4"${newline}
+"JTattoo - Aluminium"          "com.jtattoo.plaf.aluminium.AluminiumLookAndFeel"                      "1.4"${newline}
+"JTattoo - Bernstein"          "com.jtattoo.plaf.bernstein.BernsteinLookAndFeel"                      "1.4"${newline}
+"JTattoo - Fast"               "com.jtattoo.plaf.fast.FastLookAndFeel"                                "1.4"${newline}
+"JTattoo - Graphite"           "com.jtattoo.plaf.graphite.GraphiteLookAndFeel"                        "1.4"${newline}
+"JTattoo - HiFi"               "com.jtattoo.plaf.hifi.HiFiLookAndFeel"                                "1.4"${newline}
+"JTattoo - McWin"              "com.jtattoo.plaf.mcwin.McWinLookAndFeel"                              "1.4"${newline}
+"JTattoo - Mint"               "com.jtattoo.plaf.mint.MintLookAndFeel"                                "1.4"${newline}
+"JTattoo - Noire"              "com.jtattoo.plaf.noire.NoireLookAndFeel"                              "1.4"${newline}
+"JTattoo - Smart"              "com.jtattoo.plaf.smart.SmartLookAndFeel"                              "1.4"${newline}
+"JTattoo - Luna"               "com.jtattoo.plaf.luna.LunaLookAndFeel"                                "1.4"${newline}
+${newline}
+"Autumn"                       "org.pushingpixels.substance.api.skin.SubstanceAutumnLookAndFeel"                      "1.6"${newline}
+"Business"                     "org.pushingpixels.substance.api.skin.SubstanceBusinessLookAndFeel"                    "1.6"${newline}
+"Business Black Steel"         "org.pushingpixels.substance.api.skin.SubstanceBusinessBlackSteelLookAndFeel"          "1.6"${newline}
+"Business Blue Steel"          "org.pushingpixels.substance.api.skin.SubstanceBusinessBlueSteelLookAndFeel"           "1.6"${newline}
+"Challenger Deep"              "org.pushingpixels.substance.api.skin.SubstanceChallengerDeepLookAndFeel"              "1.6"${newline}
+"Creme"                        "org.pushingpixels.substance.api.skin.SubstanceCremeLookAndFeel"                       "1.6"${newline}
+"Creme Coffee"                 "org.pushingpixels.substance.api.skin.SubstanceCremeCoffeeLookAndFeel"                 "1.6"${newline}
+"Dust"                         "org.pushingpixels.substance.api.skin.SubstanceDustLookAndFeel"                        "1.6"${newline}
+"Dust Coffee"                  "org.pushingpixels.substance.api.skin.SubstanceDustCoffeeLookAndFeel"                  "1.6"${newline}
+"Emerald Dusk"                 "org.pushingpixels.substance.api.skin.SubstanceEmeraldDuskLookAndFeel"                 "1.6"${newline}
+"Gemini"                       "org.pushingpixels.substance.api.skin.SubstanceGeminiLookAndFeel"                      "1.6"${newline}
+"Graphite"                     "org.pushingpixels.substance.api.skin.SubstanceGraphiteLookAndFeel"                    "1.6"${newline}
+"Graphite Aqua"                "org.pushingpixels.substance.api.skin.SubstanceGraphiteAquaLookAndFeel"                "1.6"${newline}
+"Graphite Glass"               "org.pushingpixels.substance.api.skin.SubstanceGraphiteGlassLookAndFeel"               "1.6"${newline}
+"Magellan"                     "org.pushingpixels.substance.api.skin.SubstanceMagellanLookAndFeel"                    "1.6"${newline}
+"Mist Aqua"                    "org.pushingpixels.substance.api.skin.SubstanceMistAquaLookAndFeel"                    "1.6"${newline}
+"Mist Silver"                  "org.pushingpixels.substance.api.skin.SubstanceMistSilverLookAndFeel"                  "1.6"${newline}
+"Moderate"                     "org.pushingpixels.substance.api.skin.SubstanceModerateLookAndFeel"                    "1.6"${newline}
+"Nebula"                       "org.pushingpixels.substance.api.skin.SubstanceNebulaLookAndFeel"                      "1.6"${newline}
+"Nebula Brick Wall"            "org.pushingpixels.substance.api.skin.SubstanceNebulaBrickWallLookAndFeel"             "1.6"${newline}
+"Office Blue 2007"             "org.pushingpixels.substance.api.skin.SubstanceOfficeBlue2007LookAndFeel"              "1.6"${newline}
+"Office Silver 2007"           "org.pushingpixels.substance.api.skin.SubstanceOfficeSilver2007LookAndFeel"            "1.6"${newline}
+"Raven"                        "org.pushingpixels.substance.api.skin.SubstanceRavenLookAndFeel"                       "1.6"${newline}
+"Sahara"                       "org.pushingpixels.substance.api.skin.SubstanceSaharaLookAndFeel"                      "1.6"${newline}
+"Twilight"                     "org.pushingpixels.substance.api.skin.SubstanceTwilightLookAndFeel"                    "1.6"${newline}
+${newline}
+"Synthetica Default"           "de.javasoft.plaf.synthetica.SyntheticaStandardLookAndFeel"            "1.5"${newline}
+"Synthetica BlackStar"         "de.javasoft.plaf.synthetica.SyntheticaBlackStarLookAndFeel"           "1.5"${newline}
+"Synthetica BlueSteel"         "de.javasoft.plaf.synthetica.SyntheticaBlueSteelLookAndFeel"           "1.5"${newline}
+"Synthetica BlackMoon"         "de.javasoft.plaf.synthetica.SyntheticaBlackMoonLookAndFeel"           "1.5"${newline}
+"Synthetica BlueMoon"          "de.javasoft.plaf.synthetica.SyntheticaBlueMoonLookAndFeel"            "1.5"${newline}
+"Synthetica SilverMoon"        "de.javasoft.plaf.synthetica.SyntheticaSilverMoonLookAndFeel"          "1.5"${newline}
+"Synthetica BlueIce"           "de.javasoft.plaf.synthetica.SyntheticaBlueIceLookAndFeel"             "1.5"${newline}
+"Synthetica GreenDream"        "de.javasoft.plaf.synthetica.SyntheticaGreenDreamLookAndFeel"          "1.5"${newline}
+${newline}
+"Kunststoff"                   "com.incors.plaf.kunststoff.KunststoffLookAndFeel"                     "1.4"${newline}
+${newline}
+"Jgoodies windows"             "com.jgoodies.looks.windows.WindowsLookAndFeel"                        "1.4"     "Windows"${newline}
+"Jgoodies Plastic"             "com.jgoodies.looks.plastic.PlasticLookAndFeel"                        "1.4"${newline}
+"Jgoodies Plastic 3D"          "com.jgoodies.looks.plastic.Plastic3DLookAndFeel"                      "1.4"${newline}
+"Jgoodies PlasticXP"           "com.jgoodies.looks.plastic.PlasticXPLookAndFeel"                      "1.4"${newline}
+${newline}
+"Office 2003"                  "org.fife.plaf.Office2003.Office2003LookAndFeel"                       "1.4"     "Windows"${newline}
+"Office XP"                    "org.fife.plaf.OfficeXP.OfficeXPLookAndFeel"                           "1.4"     "Windows"${newline}
+"Office VisualStudio 2005"     "org.fife.plaf.VisualStudio2005.VisualStudio2005LookAndFeel"           "1.4"     "Windows"${newline}
+${newline}
+"Pagosoft"                     "com.pagosoft.plaf.PgsLookAndFeel"                                     "1.4"${newline}
+"InfoNode"                     "net.infonode.gui.laf.InfoNodeLookAndFeel"                             "1.4"${newline}
+"Compiere"                     "org.compiere.plaf.CompiereLookAndFeel"                                "1.5"${newline}
+"Squareness"                   "net.beeger.squareness.SquarenessLookAndFeel"                          "1.4"${newline}
+"Lipstik"                      "com.lipstikLF.LipstikLookAndFeel"                                     "1.5"${newline}
+</echo>
+
+	</target>
+
+
+	<target name="makeLog4jProperties"
+		description="Creates a log4j.properties to be used in the binary package where only warnings/error are printed to log.">
+
+	  <echo file="${dist-tmp}/log4j.properties" append="false">
+#### Using two appenders, one to log to console, another to log to a file.
+log4j.rootCategory=ALL, stdout, FileAppender
+
+#### First appender writes to console
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+
+# Setting the lowest priority to log
+log4j.appender.stdout.Threshold=WARN
+
+# Setting layout
+log4j.appender.stdout.layout=net.sf.xmm.moviemanager.util.PatternLayoutByLevel
+
+# Set default format for log levels not specifically set
+log4j.appender.stdout.layout.ConversionPattern = %d{ISO8601} %-5p [%t] %m%n
+
+# Set formats for different log levels
+log4j.appender.stdout.layout.InfoPattern = %-5p %m%n
+log4j.appender.stdout.layout.DebugPattern = %-5p %m%n
+log4j.appender.stdout.layout.WarnPattern =  %-5p %l%n %m%n
+log4j.appender.stdout.layout.ErrorPattern = %-5p %l%n %m%n
+log4j.appender.stdout.layout.FatalPattern = %-5p %l%n %m%n
+
+#### Second appender writes to file
+log4j.appender.FileAppender=org.apache.log4j.RollingFileAppender
+#log4j.appender.FileAppender.File=Log.txt
+
+# Setting the lowest priority to log
+log4j.appender.FileAppender.Threshold=ALL
+
+# Control the maximum log file size
+log4j.appender.FileAppender.MaxFileSize=300KB
+
+# Setting layout
+log4j.appender.FileAppender.layout=net.sf.xmm.moviemanager.util.PatternLayoutByLevel
+
+# Set default format for log levels not specifically set
+log4j.appender.FileAppender.layout.ConversionPattern = %d{ISO8601} %-5p [%t] %m%n
+
+# Set formats for different log levels
+log4j.appender.FileAppender.layout.InfoPattern = %-5p %m%n
+log4j.appender.FileAppender.layout.DebugPattern = %-5p %m%n
+log4j.appender.FileAppender.layout.WarnPattern =  %-5p %l%n %m%n
+log4j.appender.FileAppender.layout.ErrorPattern = %-5p %l%n %m%n
+log4j.appender.FileAppender.layout.FatalPattern = %-5p %l%n %m%n
+</echo>
+
+</target>
+
+
+	
+<target name="makeEclipseProjectFiles"
+		description="Creates a eclipse project file to be used in the source package.">
+	
+	<echo file="${dist-tmp}/.project" append="false">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;projectDescription&gt;
+	&lt;name&gt;MovieManager&lt;/name&gt;
+	&lt;comment&gt;&lt;/comment&gt;
+	&lt;projects&gt;
+	&lt;/projects&gt;
+	&lt;buildSpec&gt;
+		&lt;buildCommand&gt;
+			&lt;name&gt;org.eclipse.jdt.core.javabuilder&lt;/name&gt;
+			&lt;arguments&gt;
+			&lt;/arguments&gt;
+		&lt;/buildCommand&gt;
+	&lt;/buildSpec&gt;
+	&lt;natures&gt;
+		&lt;nature&gt;org.eclipse.jdt.core.javanature&lt;/nature&gt;
+	&lt;/natures&gt;
+&lt;/projectDescription&gt;
+    </echo>
+	
+	<!-- Create valid paths for the eclipse .classpath file. -->
+	<propertyregex property="lib-list"
+			            input="${libraries}"
+			            regexp="(lib/.*?.jar),?"
+			            replace="&lt;classpathentry kind=&quot;lib&quot; path=&quot;MovieManager/\1&quot;/&gt;${line.separator} "
+			            casesensitive="false" />
+	
+	<!-- <echo message="${jar.classpath}"/> -->
+	
+	<echo file="${dist-tmp}/.classpath" append="false">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+	&lt;classpath&gt;
+		&lt;classpathentry kind="src" path="MovieManager/source"/&gt;
+		&lt;classpathentry kind="src" path="MovieManager/test"/&gt;
+		&lt;classpathentry excluding="source/|test/" kind="src" path="MovieManager"/&gt;
+		&lt;classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/&gt;
+		&lt;classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/&gt;
+		&lt;classpathentry kind="output" path="MovieManager"/&gt;
+		${lib-list}
+	&lt;/classpath&gt;
+	</echo>
+	
+	
+</target>
+	
+	<property name="doc-src" value="doc_src"/>
+	
+	<!-- Changelog -->
+	<target name="changelog">
+		<ant antfile="doc_src/build.xml" target="changelog" inheritAll="true" dir=""/>
+	</target>
+		
+	<!-- Readme -->
+	<target name="readme">
+		<ant antfile="doc_src/build.xml" target="readme" inheritAll="true" dir=""/>
+	</target>
+
+
+
+  <property name="app-name" value="MeD's Movie Manager.app"/>
+  <property name="dmg-file" value="MovieManager.v.${versionName}.dmg"/>
+  <property name="mac-dist" value="${dist}/mac"/>
+  <property name="dist-tmp" value="${dist}/tmp/"/>
+
+	
+	
+
+ <!-- BUILD Mac  -->
+ <target name="build-mac" depends="predist, create-info-plist">
+
+	  <echo message="build-mac: ${ant.file}"/>
+
+    	<property name="tempdir" value="${mac-dist}/temp.app"/>
+
+	    <mkdir dir="${tempdir}/Contents/MacOS"/>
+	    <mkdir dir="${tempdir}/Contents/Resources/Java/config"/>
+
+   		<copy file="${dist-tmp}/log4j.properties" todir="${tempdir}/Contents/Resources/Java/config"/>
+ 		<copy file="${dist-tmp}/lookAndFeels.ini" todir="${tempdir}/Contents/Resources/Java/lib/LookAndFeels/"/>
+ 		 	
+		<copy file="MovieManager/config/castor.properties" todir="${tempdir}/Contents/Resources/Java/config"/>
+    	<copy file="MovieManager/config/Castor-mapping.xml" todir="${tempdir}/Contents/Resources/Java/config"/>
+    	
+
+		<copy todir="${tempdir}/Contents/Resources/Java/reports">
+    		<fileset dir="MovieManager/reports">
+        		<include name="**/*"/>
+   			</fileset>
+		</copy>
+		
+		<copy todir="${tempdir}/Contents/Resources/Java/HTML_templates">
+		  
+		  <!-- html template files -->
+		  <fileset dir="MovieManager/HTML_templates/" 
+				   includes="${html_template_files}"/>
+		</copy>
+		
+		<copy file="packaging/mac/resources/JavaApplicationStub" todir="${tempdir}/Contents/MacOS"/>
+ 	
+		<exec executable="chmod">
+			<arg line="755 ${tempdir}/Contents/MacOS/JavaApplicationStub"/>
+		</exec>
+
+ 	<!--	<copy file="packaging/mac/resources/Info.plist" todir="${tempdir}/Contents"/> -->
+ 	    <copy file="${dist-tmp}/Info.plist" todir="${tempdir}/Contents"/>
+ 		<copy file="packaging/mac/resources/PkgInfo" todir="${tempdir}/Contents"/>
+		<copy file="packaging/mac/resources/MovieManager.icns" todir="${tempdir}/Contents/Resources"/>
+		<copy file="MovieManager/MovieManager.jar" todir="${tempdir}/Contents/Resources/Java"/>
+		 	
+		<copy todir="${tempdir}/Contents/Resources/Java/">
+		  <fileset dir="MovieManager/"
+				   includes="${library_file_list_mac}"
+				   >
+		  </fileset>
+		</copy>
+		
+				
+		<move file="${tempdir}" tofile="${mac-dist}/${app-name}"/>
+ </target>
+    
+ <target name="install-mac" depends="build-mac">
+   <move file="${mac-dist}/${app-name}" tofile="/Applications/${app-name}"/>
+ </target>
+ 
+	
+	
+ <condition property="isOSX"><os name="Mac OS X"/> </condition>  
+	
+	<condition property="isNotOSX">
+		 <not>
+		  <os name="Mac OS X"/>
+	     </not>
+	</condition>  
+		
+	<target name="isMacCheckAlert" if="isNotOSX">
+		   <echo>This is not OS X. Must run OS X to create dmg bundle.</echo>
+	 </target>
+	
+	
+	
+  <!-- DIST Mac  -->
+ <target name="dist-mac" depends="build-mac, isMacCheckAlert" if="isOSX">
+   
+   <echo message="dist-mac: ${ant.file}"/>
+   
+ 	<!-- Copy license files  -->
+ 	<mkdir dir="${mac-dist}/License"/>
+ 	<copy todir="${mac-dist}/License">
+ 	    <fileset dir="License"/>
+ 	</copy>
+
+ 	<copy file="Readme.html" todir="${mac-dist}"/>
+ 	<copy file="Changelog.html" todir="${mac-dist}"/>
+ 	 	
+ 	<!-- Create symbolic link to /Applications directory -->
+ 	<exec executable="ln" failonerror="false">
+ 		<arg value="-s"/>
+ 		<arg value="/Applications/"/>
+ 		<arg value="${mac-dist}/Applications"/>
+ 	</exec>
+ 	
+ 	
+    <fileset file="*.dmg" />
+ 	
+ 	<!-- Delete old file  -->
+    <delete file="${mac-dist}/${dmg-file}"/>
+ 	
+	<exec executable="hdiutil" failonerror="true">
+		<arg value="create"/>
+		<arg value="-srcfolder"/>
+		<arg value="${mac-dist}/"/>
+		<arg value="-fs"/>
+		<arg value="HFS+"/>
+		<arg value="-volname"/>
+		<arg value="MeD's Movie Manager"/>
+		<arg value="${mac-dist}/temp.dmg"/>
+		<arg value="-ov"/>
+	</exec>
+    	
+    	<exec executable="hdiutil" failonerror="true">
+    		<arg line="convert ${mac-dist}/temp.dmg -format UDZO -imagekey zlib-level=-9 -o ${mac-dist}/${dmg-file} -ov"/>
+    	</exec>
+    	<delete file="${mac-dist}/temp.dmg"/>
+ 	
+ 	    <move file="${mac-dist}/${dmg-file}" todir="${dist}"/>
+ 		
+    </target>
+
+	<target name="run-mac">
+	  <exec executable="open">
+		<arg line="${mac-dist}/"/>
+	  </exec>
+	</target>
+
+	
+	<target name="create-info-plist">
+		
+		 <!-- Delete old file  -->
+		<delete file="${dist-tmp}/Info.plist"/>
+		
+<echo file="${dist-tmp}/Info.plist" encoding="UTF-8" append="false">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd"&gt;
+&lt;plist version="0.9"&gt;
+&lt;dict&gt;
+	&lt;key&gt;CFBundleName&lt;/key&gt;
+	&lt;string&gt;MeD's Movie Manager&lt;/string&gt;
+	&lt;key&gt;CFBundleVersion&lt;/key&gt;
+	&lt;string&gt;${version}&lt;/string&gt;
+	&lt;key&gt;CFBundleShortVersionString&lt;/key&gt;
+	&lt;string&gt;${version}&lt;/string&gt;
+	&lt;key&gt;CFBundleAllowMixedLocalizations&lt;/key&gt;
+	&lt;string&gt;true&lt;/string&gt;
+	&lt;key&gt;CFBundleExecutable&lt;/key&gt;
+	&lt;string&gt;JavaApplicationStub&lt;/string&gt;
+	&lt;key&gt;CFBundleDevelopmentRegion&lt;/key&gt;
+	&lt;string&gt;English&lt;/string&gt;
+	&lt;key&gt;CFBundlePackageType&lt;/key&gt;
+	&lt;string&gt;APPL&lt;/string&gt;
+	&lt;key&gt;CFBundleSignature&lt;/key&gt;
+	&lt;string&gt;????&lt;/string&gt;
+	&lt;key&gt;CFBundleInfoDictionaryVersion&lt;/key&gt;
+	&lt;string&gt;6.0&lt;/string&gt;
+	&lt;key&gt;CFBundleIconFile&lt;/key&gt;
+	&lt;string&gt;MovieManager.icns&lt;/string&gt;
+	&lt;key&gt;Java&lt;/key&gt;
+	&lt;dict&gt;
+		&lt;key&gt;MainClass&lt;/key&gt;
+		&lt;string&gt;net.sf.xmm.moviemanager.MovieManager&lt;/string&gt;
+		&lt;key&gt;JVMVersion&lt;/key&gt;
+		&lt;string&gt;1.5+&lt;/string&gt;
+		&lt;key&gt;ClassPath&lt;/key&gt;
+		&lt;string&gt;$JAVAROOT/MovieManager.jar&lt;/string&gt;
+		&lt;key&gt;WorkingDirectory&lt;/key&gt;
+		&lt;string&gt;$JAVAROOT&lt;/string&gt;
+	&lt;/dict&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+	</echo>
+	</target>
+
+</project>
+
+
+
+

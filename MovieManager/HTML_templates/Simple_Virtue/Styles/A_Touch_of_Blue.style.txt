@@ -1,0 +1,6 @@
+Style Name=A Touch of Blue
+Author Name=Bro
+Author email=bro3@users.sourceforge.net
+Style CSS=A_Touch_of_Blue.css
+Other files=
+Comments=None

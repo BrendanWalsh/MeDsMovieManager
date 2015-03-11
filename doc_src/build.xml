@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+
+<project name="MeDs Movie Manager Project" default="compile" basedir="">
+	
+	<description>Creation fo Readme and Changelog</description>
+			
+	
+	<!-- Import the ant contrib library -->
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath><pathelement location="${ant-contrib-path}"/></classpath>
+	</taskdef>
+	
+	<target name="compile">
+		<antcall target="changelog"/>
+		<antcall target="readme"/>
+	</target>
+
+	
+	<!-- Finds the path to rst2html which generates the HTML version of changelog and readme  -->
+	<target name="find-rst2html">
+  
+   		<!-- docutils can be installed both with and without py extension  -->
+  		<exec executable="which" outputproperty="rst2html-path">
+ 			<arg value="rst2html"/>
+  		</exec>
+  
+  		<exec executable="which" outputproperty="rst2html.py-path">
+ 			<arg value="rst2html.py"/>
+  		</exec>
+  
+  		<if>
+			<not>
+	  			<equals arg1="${rst2html-path}" arg2="" />
+			</not>
+	
+			<then>
+	  			<property name="rst2html-pathToUse" value="${rst2html-path}"/>
+			</then>
+	
+		<elseif>
+	  		<not>
+				<equals arg1="${rst2html.py-path}" arg2="" />
+	  		</not>
+	  
+	  		<then>
+				<property name="rst2html-pathToUse" value="${rst2html.py-path}"/>
+	  		</then>
+		</elseif>
+	
+		<else>
+	  		<echo message="rst2html could not be found" />
+		</else>
+ 		</if>
+	</target>
+
+
+	<!-- Changelog -->
+	<target name="changelog" depends="find-rst2html">
+  
+ 		<fail message="rst2html was not found, changelog can not be generated.">
+			<condition>
+      			<not>
+					<isset property="rst2html-pathToUse"/>
+      			</not>
+			</condition>
+  		</fail>
+  	
+  		<exec executable="${rst2html-pathToUse}">
+			<arg value="--stylesheet=${doc-src}/xmm.css"/>
+			<arg value="${doc-src}/Changelog.rst"/>
+			<arg value="Changelog.html"/>
+  		</exec>
+  
+  		<echo> Compiled changelog to Changelog.html </echo>
+	 
+	</target>
+		
+		
+	<target name="readme" depends="find-rst2html">
+    
+  		<fail message="rst2html was not found, readme can not be generated.">
+			<condition>
+      			<not>
+					<isset property="rst2html-pathToUse"/>
+      			</not>
+			</condition>
+  		</fail>
+  
+		<exec executable="${rst2html-pathToUse}">
+    		<arg value="--stylesheet=${doc-src}/xmm.css"/>
+    		<arg value="${doc-src}/Readme.rst"/>
+   			<arg value="Readme.html"/>
+  		</exec>
+        
+  		<echo> Compiled readme to Readme.html </echo>
+	</target>
+
+		
+</project>
+
+
+
+

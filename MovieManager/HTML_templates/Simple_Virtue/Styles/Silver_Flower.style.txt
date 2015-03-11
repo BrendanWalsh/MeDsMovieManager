@@ -1,0 +1,6 @@
+Style Name=Silver Flower
+Author Name=Bro
+Author email=bro3@users.sourceforge.net
+Style CSS=Silver_Flower.css
+Other files=Silver_Flower.png
+Comments=None

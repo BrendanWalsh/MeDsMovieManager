@@ -1,0 +1,17 @@
+Sum Durations
+SELECT Time/86400 +' days, '+ 
+
+CAST((FLOOR(Time-((Time/86400)*86400))/3600) AS INT) +' hours, '+ 
+
+CAST(FLOOR((Time -(((Time/86400)*86400) + (FLOOR(FLOOR(Time-((Time/86400)*86400))/3600)*3600)))/60) AS INT) +' Minutes, ' +
+
+CAST((Time - (((Time/86400)*86400) + (FLOOR(FLOOR(Time-((Time/86400)*86400))/3600)*3600) + FLOOR((Time -(((Time/86400)*86400) + (FLOOR(FLOOR(Time-((Time/86400)*86400))/3600)*3600)))/60)*60)) AS INT)+ ' Seconds'
+
+FROM (SELECT SUM("Additional Info"."Duration") AS Time FROM "Additional Info");
+
+
+
+
+
+
+

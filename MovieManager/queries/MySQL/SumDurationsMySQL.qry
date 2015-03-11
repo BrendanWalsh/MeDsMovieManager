@@ -1,0 +1,10 @@
+Sum Durations
+SELECT FLOOR(SUM(alias.Duration)/86400) AS 'Days',
+
+(FLOOR(SUM(alias.Duration)/3600) -(FLOOR(SUM(alias.Duration)/86400)*24)) AS 'Hours',
+
+(FLOOR(SUM(alias.Duration)/60) - (FLOOR(SUM(alias.Duration)/86400)*24*60) - ((FLOOR(SUM(alias.Duration)/3600) -(FLOOR(SUM(alias.Duration)/86400)*24))*60)) AS 'Minutes',
+
+(SUM(alias.Duration) - (FLOOR(SUM(alias.Duration)/86400)*86400) - ((FLOOR(SUM(alias.Duration)/3600) -(FLOOR(SUM(alias.Duration)/86400)*24))*3600)) - ((FLOOR(SUM(alias.Duration)/60) - (FLOOR(SUM(alias.Duration)/86400)*24*60) - ((FLOOR(SUM(alias.Duration)/3600) -(FLOOR(SUM(alias.Duration)/86400)*24))*60))*60) AS 'Seconds'
+
+FROM Additional_Info alias

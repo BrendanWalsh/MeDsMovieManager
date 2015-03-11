@@ -1,0 +1,6 @@
+Style Name=Blue Motion
+Author Name=Bro
+Author email=bro3@users.sourceforge.net
+Style CSS=Blue_Motion.css
+Other files=Blue_Motion.png
+Comments=None

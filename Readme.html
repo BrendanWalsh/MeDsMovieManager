@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.6: http://docutils.sourceforge.net/" />
+<title>MeD's Movie Manager Readme</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger
+:Contact: goodger@users.sourceforge.net
+:Date: $Date: 2005-12-18 01:56:14 +0100 (Sun, 18 Dec 2005) $
+:Revision: $Revision: 4224 $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+Modified by Espen A. Kristiansen and Bro
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+
+
+html {
+	 background-color: #F2F5F8;
+}
+
+body {
+	margin: 30px 0px 0px 0px;
+	    
+	
+
+	margin-left: auto; 
+	margin-right: auto;
+
+	width: 746px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    
+    color: #656166;
+	
+    background-color: #ffffff;
+	
+    background-position: center;
+    background-repeat: repeat;
+
+	border: 4px 4px 4px 4px;
+	border-style: groove;
+
+	padding:30px 30px 30px 40px;  
+}
+
+
+h1.title{
+	font-family:sans-serif; font-weight:normal;  font-size:2.1em;
+	padding: 20px 20px 20px 20px;  
+	
+	color:#6DA6E2;
+	background-color: #eef3f8;
+
+	border: 4px 4px 4px 4px;
+	border-style: ridge;
+	margin: 0 0 40px 0;
+
+	text-align: center;
+}
+
+h1{border-bottom: 1px solid #aaa;  color:#a72c2c;
+	font-size:1.6em; margin-top:35px;}
+h2{font-size:1.3em; margin-top:25px;}
+
+h1, h2{
+	font-family:"Georgia",serif;  font-weight:normal;
+	padding:0;}
+
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+	margin-bottom: 0.5em;
+	margin-left: 22px;
+}
+
+dl.docutils dt {
+	font-weight: bold;
+	font-size: 0.8em;
+}
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin-left: 1em ;
+  border: 3px solid #000;
+  padding: 1em ;
+  background-color: #eee ;
+  width: 80% ;
+  margin: 35px 10% 35px 10%;
+  /*float: right ;
+  clear: right*/ }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+/*h1.title {
+	text-align: center;
+	border-bottom: 1px dashed #000;
+	margin: 0 100px 40px 100px;
+}*/
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left {
+  clear: left }
+
+img.align-right {
+  clear: right }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font-family: serif ;
+  font-size: 100% }
+
+pre.literal-block, pre.doctest-block {
+  margin-left: 2em ;
+  margin-right: 2em ;
+  background-color: #eee;
+  border: 1px solid #aaa;
+  padding: 5px;}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+tt.docutils{color:#7e2121;}
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="med-s-movie-manager-readme">
+<h1 class="title">MeD's Movie Manager Readme</h1>
+
+<!-- This document is written in reStructuredText format -->
+<pre class="literal-block">
+Copyright (2003-2010) Mediterranean, Bro3
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2, or any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Boston, MA 02111.
+</pre>
+<p>MeD's Movie Manager is a simple to use, yet customizable, movie manager. It gets
+information about movies and series from IMDb.</p>
+<div class="section" id="system-requirements">
+<h1>System Requirements:</h1>
+<ol class="arabic simple">
+<li>Microsoft Windows / GNU+Linux / OS X</li>
+<li>Java Runtime Environment 1.5 or latter.
+Download &#64; <a class="reference external" href="http://java.com">http://java.com</a></li>
+</ol>
+</div>
+<div class="section" id="installing-the-movie-manager">
+<h1>Installing the Movie Manager</h1>
+<dl class="docutils">
+<dt>ZIP File:</dt>
+<dd>Simply extract the .zip contents to a new directory of your choice.</dd>
+<dt>Windows Installer:</dt>
+<dd>Double click the installer file and follow the instructions.</dd>
+<dt>OS X DMG file:</dt>
+<dd>Install like any other DMG file by double clicking and moving the
+application to the Applications directory.</dd>
+</dl>
+</div>
+<div class="section" id="how-to-run">
+<h1>How to run:</h1>
+<dl class="docutils">
+<dt>Windows:</dt>
+<dd>Double click the <em>MovieManager.exe</em> or <em>MovieManager.jar</em>. If using the <em>MovieManager.jar</em>, the <em>jar</em> extension must be associated with <em>javaw.exe</em>.</dd>
+<dt>GNU + Linux:</dt>
+<dd><strong>java –jar MovieManager.jar</strong> or if use the shortcuts if installed with cross platform installer.</dd>
+<dt>OS X:</dt>
+<dd>Using the <em>Application Bundle</em> from the <em>DMG</em> file just double click like any other program. Using the cross-platform installer or ZIP file, start by double clicking the <em>MovieManager.jar</em>.</dd>
+</dl>
+</div>
+<div class="section" id="features">
+<h1>Features</h1>
+<ul class="simple">
+<li>Quick movie filter with advanced search options.</li>
+<li>List functionality for categorizing movies.</li>
+<li>Episode functionality for series</li>
+<li>Multi-add function (Search directories for files)</li>
+<li>Obtain AVI / OGM / MPEG and DVD (ifo) media file info</li>
+<li>Automatic download of movie info and series info from IMDb wih Proxy support.</li>
+<li>Import Text (titles), CSV and Excel.</li>
+<li>Export to CSV, Excel and HTML.</li>
+<li>Customizable additional info fields.</li>
+<li>Changeable layout (Look and Feels)</li>
+</ul>
+<p>This product includes software developed by L2FProd.com  (<a class="reference external" href="http://www.L2FProd.com/">http://www.L2FProd.com/</a>).</p>
+<p>Bug Reports / Feature Requests / Contacts</p>
+<p>Please report bugs and feature requests in the forum.</p>
+<p>Email: <a class="reference external" href="mailto:bro3&#64;users.sourceforge.net">bro3&#64;users.sourceforge.net</a>
+Home Page: <a class="reference external" href="http://xmm.sourceforge.net">http://xmm.sourceforge.net</a></p>
+</div>
+<div class="section" id="links">
+<h1>Links:</h1>
+<ul class="simple">
+<li><a class="reference external" href="http://www.hsqldb.org">HSQLDB</a> - 100% Java Database</li>
+<li><a class="reference external" href="http://www.mysql.com/products/connector/j">MySQL</a> - Connector/J: Official MySQL Java driver</li>
+<li><a class="reference external" href="http://www.andykhan.com/jexcelapi">Jexcel</a> - Java excel driver</li>
+<li><a class="reference external" href="http://browserlaunch2.sourceforge.net">BrowserLauncher2</a> - Browser launcher java library</li>
+<li><a class="reference external" href="http://launch4j.sourceforge.net">Launch4j</a> - Jar wrapper to create windows native exe's</li>
+<li><a class="reference external" href="http://logging.apache.org/log4j/docs/index.html">Log4j</a> - Java logging library</li>
+<li><a class="reference external" href="http://dotuseful.sourceforge.net">Dotuseful</a> - Java library with Swing Tree classes extension</li>
+<li><a class="reference external" href="https://tablelayout.dev.java.net">Tablelayout</a> - TableLayout is a powerful and free layout manager</li>
+<li><a class="reference external" href="http://jakarta.apache.org/commons/httpclient">HttpClient</a> - HTTP java library</li>
+<li><a class="reference external" href="https://jna.dev.java.net/">JNA</a> - Dynamically access native libraries from Java without JNI.</li>
+<li><a class="reference external" href="http://mediainfo.sourceforge.net/en">MediaInfo.dll</a> - Media file parser</li>
+<li><a class="reference external" href="http://jasperforge.org/projects/jasperreports">JasperReports</a> - Report creation utility</li>
+<li><a class="reference external" href="http://izpack.org">IzPack</a> - IzPack Java Installer</li>
+<li><a class="reference external" href="http://lobobrowser.org/java-browser.jsp">Lobo</a> - Java Web Browser: Pure Java browser</li>
+<li><a class="reference external" href="http://lobobrowser.org/cobra.jsp">Cobra Toolkit</a> - Cobra: Java HTML Renderer &amp; Parser</li>
+<li><a class="reference external" href="http://www.castor.org">The Castor Project</a> - Data binding framework for Java</li>
+<li><a class="reference external" href="https://balloontip.dev.java.net">Balloontip</a> - Balloon tips for Java</li>
+<li><a class="reference external" href="https://sourceforge.net/projects/jupidator">Jupidator</a> - Java library for automatic updating</li>
+</ul>
+</div>
+<div class="section" id="here-are-some-nice-look-feels-for-java">
+<h1>Here are some nice Look &amp; Feels for Java:</h1>
+<ul class="simple">
+<li><a class="reference external" href="http://javootoo.l2fprod.com">LaF list at javootoo.com:</a></li>
+<li><a class="reference external" href="http://www.L2FProd.com">Skinlf</a> - Skin Look &amp; Feel</li>
+<li><a class="reference external" href="http://personales.ya.com/nimrod/index-en.html">NimROD</a> - NimROD Look &amp; Feel</li>
+<li><a class="reference external" href="https://substance.dev.java.net">Substance</a> - Substance Look &amp; Feel</li>
+<li><a class="reference external" href="http://www.jtattoo.net">JTatto</a> - JTattoo Look &amp; Feel</li>
+<li><a class="reference external" href="http://officelnfs.sourceforge.net">Office LaF</a> - Office Look &amp; Feel</li>
+<li><a class="reference external" href="http://www.jgoodies.com">JGoodies LaF</a> - JGoodies Look &amp; Feel</li>
+<li><a class="reference external" href="http://www.incors.org">Kunstoff laf</a> - Kunstoff Look &amp; Feel</li>
+</ul>
+</div>
+</div>
+</body>
+</html>
